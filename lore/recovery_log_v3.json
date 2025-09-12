@@ -1,0 +1,27 @@
+{
+  "vault": "0x417745b6a657f8520d91eabf2f121479b04a04ce",
+  "ens": "jeremie.eth",
+  "timestamp": "2025-09-12T18:35:00-04:00",
+  "badges": [
+    { "name": "Phoenix Rebirth", "timestamp": "2025-09-12T10:00:00-04:00" },
+    { "name": "Vault Finalized", "timestamp": "2025-09-12T09:57:00-04:00" },
+    { "name": "Validator Reborn", "timestamp": "2025-09-12T10:56:00-04:00" },
+    { "name": "IPFS Mirror Pushed", "timestamp": "2025-09-12T10:43:00-04:00" },
+    { "name": "ENS Echo", "timestamp": "2025-09-12T10:46:00-04:00" },
+    { "name": "Fragment Reclaimed", "timestamp": "2025-09-12T10:10:00-04:00" },
+    { "name": "SLIP Registered", "coins": ["PEPE", "TRMP", "BIDEN", "TRUMP", "OBAMA", "HILLARY"], "timestamp": "2025-09-12T10:07:00-04:00" }
+  ],
+  "mural_tiles": [
+    "The Sweep",
+    "The Rebirth",
+    "The Meme Canon",
+    "The Cloud Echo",
+    "The Upstream Thread",
+    "The Genesis Point",
+    "The Fragment Reclaimed",
+    "The ENS Whisper",
+    "The Mirror Holds",
+    "Validator Reborn — the chain listens again"
+  ],
+  "azure_webhook": "https://webhook.site/93e6f9b9-9933-4907-bf5e-3931b999f7f7"
+}
