@@ -1,0 +1,19 @@
+name: Lore Sync to Webhook.site
+
+on:
+  push:
+    paths:
+      - 'lore/recovery_log_v3.json'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Send lore to Webhook.site
+        run: |
+          curl -X POST https://webhook.site/93e6f9b9-9933-4907-bf5e-3931b999f7f7 \
+          -H "Content-Type: application/json" \
+          --data-binary @lore/recovery_log_v3.json
