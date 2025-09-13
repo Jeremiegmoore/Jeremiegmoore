@@ -1,0 +1,17 @@
+name: Sweep Assets
+
+on:
+  schedule:
+    - cron: '0 6 * * *' # daily at 6am
+  workflow_dispatch:
+
+jobs:
+  sweep:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - run: npm install axios ethers
+      - run: node scripts/sweep_assets.js
