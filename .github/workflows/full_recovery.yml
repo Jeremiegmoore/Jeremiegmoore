@@ -1,0 +1,17 @@
+name: Full Recovery Sweep
+
+on:
+  schedule:
+    - cron: '0 5 * * *' # daily at 5am
+  workflow_dispatch:
+
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - run: npm install axios ethers dotenv
+      - run: node scripts/recovery_suite.js
