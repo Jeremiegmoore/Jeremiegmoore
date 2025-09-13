@@ -1,0 +1,28 @@
+const fs = require("fs");
+const { create, add } = require("ipfs-http-client");
+const { ethers, Wallet, Contract } = require("ethers");
+require("dotenv").config();
+
+const vault = "0x417745b6a657f8520d91eabf2f121479b04a04ce";
+const provider = new ethers.JsonRpcProvider("https://mainnet.infura.io/v3/6c06cc61db8248b598a1484817ffadb6");
+const signer = new Wallet(process.env.VAULT_KEY, provider);
+const ensName = "jeremie.eth";
+const ipfs = create({ url: "https://ipfs.infura.io/api/v0" });
+
+async function runSync() {
+  const files = ["recovery_ledger.json", "sweep_log.json", "portfolio.json", "contracts.json", "lore_registry.md"];
+  const records = {};
+  for (const file of files) {
+    const data = fs.readFileSync(file);
+    const cid = await ipfs.add({ path: file, content: data });
+    records["ipfs:" + file.replace(".json", "").replace(".md", "")] = "ipfs://" + cid.cid.toString();
+  }
+
+  const ens = new Contract("0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e", ["function setText(string name, string key, string value)"], signer);
+  for (const [key, value] of Object.entries(records)) {
+    await ens.setText(ensName, key, value);
+  }
+  console.log("✅ Lore anchored to ENS:", records);
+}
+
+runSync().catch(console.error);
