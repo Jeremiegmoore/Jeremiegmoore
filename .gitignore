@@ -1,0 +1,29 @@
+# Environment variables
+.env
+
+# Logs and temporary files
+*.log
+sweep_log.json
+rewards_log.json
+portfolio.json
+
+# Node modules
+node_modules/
+
+# Build artifacts
+dist/
+build/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Private keys and recovery data
+recovery_log.json
+recovery_ledger.json

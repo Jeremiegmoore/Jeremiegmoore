@@ -1,9 +1,10 @@
 const fs = require("fs");
 const axios = require("axios");
 const { ethers } = require("ethers");
+require("dotenv").config();
 
-const vault = "0x417745b6a657f8520d91eabf2f121479b04a04ce";
-const provider = new ethers.JsonRpcProvider("https://mainnet.infura.io/v3/6c06cc61db8248b598a1484817ffadb6");
+const vault = process.env.VAULT_ADDRESS;
+const provider = new ethers.JsonRpcProvider(process.env.INFURA_RPC);
 
 async function fetchPortfolio() {
   const ethBalance = await provider.getBalance(vault);
