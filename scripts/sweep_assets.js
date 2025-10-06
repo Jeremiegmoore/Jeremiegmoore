@@ -1,9 +1,10 @@
 const fs = require("fs");
 const { ethers, Wallet, Contract } = require("ethers");
 const axios = require("axios");
+require("dotenv").config();
 
-const provider = new ethers.JsonRpcProvider("https://mainnet.infura.io/v3/6c06cc61db8248b598a1484817ffadb6");
-const vault = "0x417745b6a657f8520d91eabf2f121479b04a04ce";
+const provider = new ethers.JsonRpcProvider(process.env.INFURA_RPC);
+const vault = process.env.VAULT_ADDRESS;
 const recoveryLog = JSON.parse(fs.readFileSync("recovery_log.json"));
 
 const erc20ABI = ["function transfer(address to, uint256 amount) public returns (bool)", "function balanceOf(address) view returns (uint256)"];
