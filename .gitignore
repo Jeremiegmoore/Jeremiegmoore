@@ -1,0 +1,6 @@
+# Ignore runtime recovery log
+recovery_log.json
+
+# Dependencies
+node_modules/
+package-lock.json
