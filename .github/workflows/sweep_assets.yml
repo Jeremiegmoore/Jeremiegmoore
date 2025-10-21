@@ -14,4 +14,9 @@ jobs:
         with:
           node-version: '18'
       - run: npm install axios ethers
+      - name: Ensure recovery_log.json exists
+        run: |
+          if [ ! -f recovery_log.json ]; then
+            echo '[]' > recovery_log.json
+          fi
       - run: node scripts/sweep_assets.js
