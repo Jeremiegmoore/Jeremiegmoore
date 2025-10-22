@@ -3,6 +3,10 @@ const { ethers, Wallet, Contract } = require("ethers");
 const axios = require("axios");
 require("dotenv").config();
 
+// Validate required environment variables
+if (!process.env.INFURA_RPC || !process.env.VAULT_ADDRESS) {
+  throw new Error('Missing required environment variables. Please check your .env file for INFURA_RPC and VAULT_ADDRESS.');
+}
 const provider = new ethers.JsonRpcProvider(process.env.INFURA_RPC);
 const vault = process.env.VAULT_ADDRESS;
 const recoveryLog = JSON.parse(fs.readFileSync("recovery_log.json"));
