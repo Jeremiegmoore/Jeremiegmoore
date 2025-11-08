@@ -3,6 +3,15 @@ const axios = require("axios");
 const { ethers } = require("ethers");
 require("dotenv").config();
 
+// Validate required environment variables
+if (!process.env.VAULT_ADDRESS) {
+  console.error("Error: VAULT_ADDRESS environment variable is not set.");
+  process.exit(1);
+}
+if (!process.env.INFURA_RPC) {
+  console.error("Error: INFURA_RPC environment variable is not set.");
+  process.exit(1);
+}
 const vault = process.env.VAULT_ADDRESS;
 const provider = new ethers.JsonRpcProvider(process.env.INFURA_RPC);
 
