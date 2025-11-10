@@ -3,6 +3,14 @@ const { create, add } = require("ipfs-http-client");
 const { ethers, Wallet, Contract } = require("ethers");
 require("dotenv").config();
 
+// Validate required environment variables
+const requiredEnv = ["VAULT_ADDRESS", "INFURA_RPC", "ENS_NAME"];
+for (const name of requiredEnv) {
+  if (!process.env[name]) {
+    console.error(`❌ Missing required environment variable: ${name}`);
+    process.exit(1);
+  }
+}
 const vault = process.env.VAULT_ADDRESS;
 const provider = new ethers.JsonRpcProvider(process.env.INFURA_RPC);
 const signer = new Wallet(process.env.VAULT_KEY, provider);
